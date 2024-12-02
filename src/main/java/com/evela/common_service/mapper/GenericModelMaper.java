@@ -1,10 +1,5 @@
-package com.evela.common_service.util;
+package com.evela.common_service.mapper;
 
-
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-import org.modelmapper.ModelMapper;
 
 /*
 @Component

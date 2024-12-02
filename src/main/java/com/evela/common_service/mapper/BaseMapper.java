@@ -1,25 +1,33 @@
 package com.evela.common_service.mapper;
 
 import com.evela.common_service.base.BaseEntity;
-import com.evela.common_service.dto.BaseDTO;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
-//@Mapper
-public interface BaseMapper {
+//@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public interface BaseMapper{//<E extends BaseEntity, D extends BaseDTO<?>> {
     /*BaseMapper INSTANCE = Mappers.getMapper(BaseMapper.class);
-    @Mapping(target = "createdAt", source = "createdAt")
-    @Mapping(target = "updatedAt", source = "updatedAt")
-    @Mapping(target = "createdBy", source = "createdBy")
-    @Mapping(target = "updatedBy", source = "updatedBy")
-    @Mapping(target = "isActive", source = "isActive")
+    @Mappings({
+            @Mapping(target = "createdAt", source = "createdAt", qualifiedByName = "fromOptionalString"),
+            @Mapping(target = "updatedAt", source = "updatedAt", qualifiedByName = "fromOptionalLocalDateTime" ),
+            @Mapping(target = "createdBy", source = "createdBy", qualifiedByName = "fromOptionalString"),
+            @Mapping(target = "updatedBy", source = "updatedBy", qualifiedByName = "fromOptionalLocalDateTime"),
+            @Mapping(target = "active", source = "active")
+    })
     BaseDTO toDTO(BaseEntity entity);
 
-    @Mapping(target = "createdAt", source = "createdAt")
-    @Mapping(target = "updatedAt", source = "updatedAt")
-    @Mapping(target = "createdBy", source = "createdBy")
-    @Mapping(target = "updatedBy", source = "updatedBy")
-    @Mapping(target = "isActive", source = "isActive")
-    BaseEntity toEntity(BaseDTO dto);*/
+    @InheritInverseConfiguration
+    BaseEntity toEntity(BaseDTO dto);
+
+    // Métodos personalizados para manejar Optional<String>
+    @Named("fromOptionalString")
+    default String fromOptionalString(Optional<String> value) {
+        return value.orElse(null); // Si el Optional está vacío, devolverá null
+    }
+
+    @Named("fromOptionalLocalDateTime")
+    default LocalDateTime fromOptionalLocalDateTime(Optional<LocalDateTime> value) {
+        return value.orElse(null); // Si el Optional está vacío, devolverá null
+    }*/
+/*
+    D toDTO(E entity);
+    E toEntity(D dto);*/
 }

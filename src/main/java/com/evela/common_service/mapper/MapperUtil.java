@@ -1,7 +1,4 @@
-package com.evela.common_service.util;
-
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+package com.evela.common_service.mapper;
 
 //@Component
 //@RequiredArgsConstructor

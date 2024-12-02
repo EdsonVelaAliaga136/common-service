@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-//@AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class ErrorResponse {
 
@@ -18,11 +18,11 @@ public class ErrorResponse {
     private String message;
     private String path;
 
-        // Constructor manual
-    public ErrorResponse(LocalDateTime datetime, int statusCode, String message, String path) {
+    // Constructor manual
+    /*public ErrorResponse(LocalDateTime datetime, int statusCode, String message, String path) {
         this.datetime = datetime;
         this.statusCode = statusCode;
         this.message = message;
         this.path = path;
-    }
+    }*/
 }

@@ -16,7 +16,7 @@ public class RestConfig {
     @Value("${resttemplate.read-timeout}")
     private int readTimeout;
 
-    @Bean
+    @Bean("restTemplate")
     public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder){
         return restTemplateBuilder
                 .connectTimeout(Duration.ofMillis(connectTimeout))
