@@ -1,7 +1,9 @@
 package com.evela.common_service.base;
 
+import com.evela.common_service.audit.CustomAuditorAware;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -10,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Data
 @MappedSuperclass
@@ -17,7 +20,7 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity implements Serializable{//} implements Auditable<String, Long, LocalDateTime>, Serializable {
     /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)*/
-    private Long id;
+    //private Long id;
 
     @Version
     @Column(name = "version")
@@ -39,80 +42,27 @@ public abstract class BaseEntity implements Serializable{//} implements Auditabl
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @Column(nullable = false)
-    private Boolean active = true;
-/*
-    //@Override
-    @NonNull
-    public Optional<String> getCreatedBy() {
-        return Optional.ofNullable(createdBy);
+    @Column(name = "active")
+    private Boolean active;//base = true;
+
+    /*@Autowired
+    private CustomAuditorAware auditorAware;*/
+    /*
+    @PrePersist
+    protected void onCreated(){
+        createdAt=LocalDateTime.now();
+        //createdBy=auditorAware.getCurrentAuditor().orElse("unknow");
+        //createdBy=getCurrentAuditor().orElse("unknow");
     }
 
-    @Override
-    @NonNull
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    @PreUpdate
+    protected void onUpdated(){
+        updatedAt=LocalDateTime.now();
+        //updatedBy=auditorAware.getCurrentAuditor().orElse("unknow");
+        //updatedBy=getCurrentAuditor().orElse("unknow");
     }
-
-    @Override
-    @NonNull
-    public Optional<LocalDateTime> getCreatedDate() {
-        return Optional.ofNullable(createdAt);
-    }
-
-    @Override
-    @NonNull
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdAt = createdDate;
-    }
-
-    @Override
-    @NonNull
-    public Optional<String> getLastModifiedBy() {
-        return Optional.ofNullable(updatedBy);
-    }
-
-    @Override
-    @NonNull
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.updatedBy = lastModifiedBy;
-    }
-
-    @Override
-    @NonNull
-    public Optional<LocalDateTime> getLastModifiedDate() {
-        return Optional.ofNullable(updatedAt);
-    }
-
-    @Override
-    @NonNull
-    public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
-        this.updatedAt = lastModifiedDate;
-    }
-
-    @Override
-    public boolean isNew() {
-        return false;// id == null;
-    }
-
-    public void setActive(Boolean active) {
-        active = active;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    @NonNull
-    public String getCreatedByString() {
-        return createdBy;
-    }*/
-    /*@NonNull
-    public void setCreatedByString(String createdBy) {
-        this.createdBy = createdBy;
+    */
+    /*private Optional<String> getCurrentAuditor(){
+        return new CustomAuditorAware().getCurrentAuditor();
     }*/
 }

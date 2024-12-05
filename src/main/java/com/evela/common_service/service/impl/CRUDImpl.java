@@ -1,5 +1,6 @@
 package com.evela.common_service.service.impl;
 
+import com.evela.common_service.exception.NewModelNotFoundException;
 import com.evela.common_service.repository.IGenericRepo;
 import com.evela.common_service.service.ICRUD;
 import jakarta.persistence.EntityManager;
@@ -19,24 +20,13 @@ public abstract class CRUDImpl<T, ID> implements ICRUD<T, ID> {
     @Transactional
     @Override
     public T save(T t) throws Exception {
-        if (isEntityDetached(t)) {
-            // Si la entidad está detached, usamos merge
-            return entityManager.merge(t);
-        } else {
-            // Si la entidad está gestionada, usamos save (por ejemplo, en una entidad nueva)
             return getRepo().save(t);
-        }
     }
     @Transactional
     @Override
-    public T update(T t) throws Exception {
-         if (isEntityDetached(t)) {
-            // Si la entidad está detached, usamos merge
-            return entityManager.merge(t);
-        } else {
-            // Si la entidad está gestionada, usamos save (por ejemplo, en una entidad nueva)
-            return getRepo().save(t);
-        }
+    public T update(T t, ID id) throws Exception {
+        getRepo().findById(id).orElseThrow(()->new NewModelNotFoundException("ID NOT FOOUND " + id));
+        return getRepo().save(t);
     }
     @Transactional
     @Override

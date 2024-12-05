@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class BaseDTO<ID extends Serializable> implements Serializable{
     //private ID id;  // Identificador genérico que puede ser Long, UUID, String, etc.
 
-    private Long version = 0L; // Esto controla la concurrencia optimista
+    private Long version;// = 0L; // Esto controla la concurrencia optimista
 
     private String createdBy;
 
@@ -24,7 +24,7 @@ public class BaseDTO<ID extends Serializable> implements Serializable{
 
     private Boolean active;
 
-    private boolean isNew(){
+    /*private boolean isNew(){
         return false;// id == null;
-    }
+    }*/
 }
