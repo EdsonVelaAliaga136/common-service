@@ -14,14 +14,6 @@ public class BaseDTO<ID extends Serializable> implements Serializable{
 
     private Long version;// = 0L; // Esto controla la concurrencia optimista
 
-    private String createdBy;
-
-    private String updatedBy;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
-
     private Boolean active;
 
     /*private boolean isNew(){

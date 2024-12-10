@@ -26,22 +26,6 @@ public abstract class BaseEntity implements Serializable{//} implements Auditabl
     @Column(name = "version")
     private Long version; // Esto controla la concurrencia optimista
 
-    @CreatedBy
-    @Column(name = "created_by", nullable = false, updatable = false)
-    private String createdBy;
-
-    @LastModifiedBy
-    @Column(name = "updated_by")
-    private String updatedBy;
-
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
-
     @Column(name = "active")
     private Boolean active;//base = true;
 
