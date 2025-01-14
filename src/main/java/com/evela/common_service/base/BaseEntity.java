@@ -29,8 +29,8 @@ public abstract class BaseEntity implements Serializable{//} implements Auditabl
     @Column(name = "active")
     private Boolean active;//base = true;
 
-    @Column
-    private Enum status;
+    /*@Column
+    private Enum status;*/
 
     /*@Autowired
     private CustomAuditorAware auditorAware;*/
