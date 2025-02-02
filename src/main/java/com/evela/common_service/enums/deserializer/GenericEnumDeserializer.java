@@ -5,16 +5,23 @@ import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+
 public class GenericEnumDeserializer <E extends Enum<E> & EnumWithCustomValue<T>, T> extends JsonDeserializer<E> {
-    private final Class<E> enumClass;
+    private Class<E> enumClass;
 
     public GenericEnumDeserializer(Class<E> enumClass) {
         this.enumClass = enumClass;
+    }
+
+    public GenericEnumDeserializer() {
+        // Constructor vacío requerido por Jackson
     }
 
     @Override
