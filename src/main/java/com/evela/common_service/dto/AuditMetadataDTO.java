@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Embeddable
+//@Embeddable
 public class AuditMetadataDTO {
 
     private String createdBy;

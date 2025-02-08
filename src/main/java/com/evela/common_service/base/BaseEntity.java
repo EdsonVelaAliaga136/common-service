@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Data
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity implements Serializable{//} implements Auditable<String, Long, LocalDateTime>, Serializable {
     /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)*/

@@ -17,4 +17,8 @@ public class ValidationUtils {
     public static boolean isEmail(String email) {
         return email != null && email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
     }
+
+    public static boolean isNotNull(Object object){
+        return object != null;
+    }
 }
