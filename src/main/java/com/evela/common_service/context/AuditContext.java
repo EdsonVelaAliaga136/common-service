@@ -6,6 +6,7 @@ public class AuditContext {
     public static void setCurrentUser(String user){
         currentUser.set(user);
     }
+
      public static String getCurrentUser() {
         return currentUser.get();
     }

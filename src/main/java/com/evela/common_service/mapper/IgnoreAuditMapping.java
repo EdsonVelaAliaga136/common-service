@@ -9,10 +9,10 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-/*@Mapping(target = "createdAt", ignore = true)
-@Mapping(target = "updatedAt", ignore = true)
+@Mapping(target = "createdOn", ignore = true)
+@Mapping(target = "updatedOn", ignore = true)
 @Mapping(target = "createdBy", ignore = true)
-@Mapping(target = "updatedBy", ignore = true)*/
-@Mapping(target = "auditMetadata", ignore = true)
+@Mapping(target = "updatedBy", ignore = true)
+//@Mapping(target = "auditMetadata", ignore = true)
 public @interface IgnoreAuditMapping {
 }
